@@ -35,4 +35,13 @@
     </bean>
     <bean id="pCounter" class="sit.int204.lab01.beans.PrototypeCounter" scope="singleton" />
     <bean id="sCounter" class="sit.int204.lab01.beans.SingletonCounter" factory-method="getInstance" />
+
+    <bean id="geometricShapeFactory" class="sit.int204.lab01.beans.GeometricShapeFactory"/>
+    <bean id="circle" factory-bean="geometricShapeFactory" class="sit.int204.lab01.beans.Circle"/>
+    <bean id="rectangle" factory-bean="geometricShapeFactory" class="sit.int204.lab01.beans.Rectangle" >
+        <property name="width" value="2.5" />
+        <property name="height" value="3.2" />
+    </bean>
+    <bean id="c" class="sit.int204.lab01.beans.GeometricShapeFactory" factory-method="getCircle"/>
+    <bean id="r" class="sit.int204.lab01.beans.GeometricShapeFactory" factory-method="getRectangle" />
 </beans>
