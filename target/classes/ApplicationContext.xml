@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="car" class="sit.int204.lab01.beans.Car">
+        <constructor-arg name="chasisNumber" value="SEW12345VM"/>
+        <constructor-arg name="brand" value="Volvo XC40"/>
+        <constructor-arg name="engine" ref="1KD-FTV"/>
+    </bean>
+    <bean id="1KD-FTV" class="sit.int204.lab01.beans.DieselEngine">
+        <constructor-arg value="2490" type="int"/>
+    </bean>
+
+<!--    <bean id="engine" class="sit.int204.lab01.beans.GasolineEngine">-->
+<!--        <constructor-arg value="1200" type="int"/>-->
+<!--    </bean>-->
+
+    <bean id="carN" class="sit.int204.lab01.beans.Car" autowire="byType">
+        <property name="chasisNumber" value="BY-NAME1234"/>
+        <property name="brand" value="Benz E520D"/>
+    </bean>
+
+    <bean id="carZ" class="sit.int204.lab01.beans.Car" autowire="constructor" />
+    <bean id="brand" class="java.lang.String">
+        <constructor-arg value="Honda CRV" />
+    </bean>
+    <bean id="chasisNumber" class="java.lang.String">
+        <constructor-arg value="BY-CONSTR-1234" />
+    </bean>
+
+    <bean id="carX" class="sit.int204.lab01.beans.Car">
+        <property name="chasisNumber" value="MV2590" />
+        <property name="brand" value="Audi" />
+        <property name="engine" ref="1KD-FTV" />
+    </bean>
+    <bean id="pCounter" class="sit.int204.lab01.beans.PrototypeCounter" scope="singleton" />
+    <bean id="sCounter" class="sit.int204.lab01.beans.SingletonCounter" factory-method="getInstance" />
+</beans>
